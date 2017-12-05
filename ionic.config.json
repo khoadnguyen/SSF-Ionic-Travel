@@ -1,0 +1,8 @@
+{
+  "name": "travel-buddy-app",
+  "app_id": "c3e80678",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
