@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Search
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page3">
+  <h2 id="search-heading4" style="color:#000000;font-weight:300;text-align:center;">
+    Find Users
+  </h2>
+  <form id="search-form4">
+    <ion-item-divider color="light" id="search-list-item-divider2">
+      By Username
+    </ion-item-divider>
+    <ion-searchbar placeholder="" name="" id="search-search1"></ion-searchbar>
+    <div class="spacer" style="width:300px;height:20px;" id="search-spacer4"></div>
+    <button id="search-button7" ion-button color="positive" block style="font-weight:300;" on-click="goToSearch2()">
+      Search
+    </button>
+    <div class="spacer" style="width:300px;height:25px;" id="search-spacer5"></div>
+    <h4 id="search-heading6" style="color:#000000;font-weight:300;text-align:center;">
+      or
+    </h4>
+    <div class="spacer" style="width:300px;height:25px;" id="search-spacer6"></div>
+    <ion-item-divider color="light" id="search-list-item-divider3">
+      By Location
+    </ion-item-divider>
+    <ion-item id="search-toggle6">
+      <ion-label>
+        Near me
+      </ion-label>
+      <ion-toggle color="positive" checked="false" on-click="getLocation()"></ion-toggle>
+    </ion-item>
+    <div class="spacer" style="width:300px;height:20px;" id="search-spacer3"></div>
+    <button id="search-button8" ion-button color="positive" block style="font-weight:300;" on-click="goToSearch2()">
+      Search
+    </button>
+  </form>
+</ion-content>

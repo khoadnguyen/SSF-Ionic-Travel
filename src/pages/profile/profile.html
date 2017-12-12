@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Profile
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page4">
+  <ion-card id="profile-card21">
+    <ion-list>
+      <ion-item color="none" id="profile-list-item13">
+        <ion-avatar item-left on-click="editPhoto()">
+          <img src="assets/img/f8G3oZbQoOoVHVV2ULAB_person.jpg" />
+        </ion-avatar>
+        <h2>
+          First Name, Last Name
+        </h2>
+      </ion-item>
+      <ion-item color="none" id="profile-list-item19">
+        Username
+      </ion-item>
+      <ion-item color="none" id="profile-list-item20">
+        Email
+      </ion-item>
+      <ion-item color="none" id="profile-list-item23"  on-click="getLocation()">
+        Location
+        <ion-icon name="locate" item-right ></ion-icon>
+      </ion-item>
+      <ion-item id="profile-list-item-container2">
+        <div id="profile-markdown2" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#000000;">
+            Biography
+          </p>
+          <p style="color:#000000;">
+            Vivamus egestas quam at enim bibendum, sed laoreet libero laoreet. Fusce enim eros, elementum blandit porta dapibus, egestas ac mi. Vivamus semper arcu in sodales egestas.
+          </p>
+        </div>
+      </ion-item>
+      <button id="profile-button9" ion-button color="positive" block style="font-weight:300;">
+        Edit
+      </button>
+    </ion-list>
+  </ion-card>
+</ion-content>

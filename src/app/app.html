@@ -1,1 +1,35 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="mainContent">
+  <ion-content id="side-menu21">
+    <ion-list id="menu-list3" class="menu-profile">
+      <ion-item-sliding>
+        <ion-item color="none" id="menu-list-item3" class="menu-profile-img">
+          <ion-avatar item-left>
+            <img src="assets/img/f8G3oZbQoOoVHVV2ULAB_person.jpg" />
+          </ion-avatar>
+          <h2>
+            First, Last Name
+          </h2>
+        </ion-item>
+        <ion-item-options side="left">
+          <button ion-button color="light"></button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+    <ion-list id="menu-list4" class="menu-nav">
+      <ion-item color="none" menuClose="" on-click="goToProfile()" id="menu-list-item7" class="menu-nav-item-1">
+        Profile
+      </ion-item>
+      <ion-item color="none" menuClose="" on-click="goToSearch()" id="menu-list-item8" class="menu-nav-item-2">
+        Search
+      </ion-item>
+      <ion-item color="none" menuClose="" on-click="goToMessage()" id="menu-list-item9" class="menu-nav-item-3">
+        Message
+      </ion-item>
+    </ion-list>
+    <button id="menu-button10" ion-button outline color="dark" full style="font-weight:300;text-align:justify;" menuClose="" on-click="goToLogin()">
+      Logout
+    </button>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mainContent [root]="rootPage"></ion-nav>
