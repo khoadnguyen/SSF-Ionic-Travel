@@ -1,47 +1,47 @@
 <ion-content padding id="page6">
-  <button id="register-button5" ion-button clear color="light" small icon-left style="border-radius:0px 0px 0px 0px;" on-click="goToLogin()">
+  <button id="register-button5" ion-button clear color="positive" small icon-left style="font-weight:300; border-radius:0px 0px 0px 0px;" on-click="goToLogin()">
     <ion-icon name="arrow-back"></ion-icon>
     Back
   </button>
   <h2 id="register-heading2" style="color:#000000;font-weight:300;text-align:center;">
     Register
   </h2>
-  <form id="register-form2">
-    <ion-list id="register-list6">
-      <ion-item id="register-input3">
+  <form id="register-form">
+    <ion-list id="register-list">
+      <ion-item id="register-fname">
         <ion-label floating>
           First Name
         </ion-label>
-        <ion-input type="text" placeholder="First Name"></ion-input>
+        <ion-input type="text" [(ngModel)]="user.fname" [ngModelOptions]="{standalone: true}"></ion-input>
       </ion-item>
-      <ion-item id="register-input6">
+      <ion-item id="register-lname">
         <ion-label floating>
           Last Name
         </ion-label>
-        <ion-input type="text" placeholder="Last Name"></ion-input>
+        <ion-input type="text"  [(ngModel)]="user.lname" [ngModelOptions]="{standalone: true}"></ion-input>
       </ion-item>
-      <ion-item id="register-input4">
+      <ion-item id="register-email">
         <ion-label floating>
           Email
         </ion-label>
-        <ion-input type="email" placeholder="Email"></ion-input>
+        <ion-input type="email"  [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}"></ion-input>
       </ion-item>
-      <ion-item id="register-input9">
-        <ion-label floating>
-          Username
-        </ion-label>
-        <ion-input type="text" placeholder="Username"></ion-input>
-      </ion-item>
-      <ion-item id="register-input5">
+      <ion-item id="register-password">
         <ion-label floating>
           Password
         </ion-label>
-        <ion-input type="password" placeholder="Password"></ion-input>
+        <ion-input type="password"  [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+      <ion-item id="register-error" style="margin-top: 10px; color: red;" *ngIf="formError">
+        <ion-label style="display: none;"></ion-label>
+        <div item-content text-wrap text-left float-start>
+          {{formError}}
+        </div>
       </ion-item>
     </ion-list>
-    <div class="spacer" style="height:40px;" id="register-spacer8"></div>
-    <button id="register-button3" ion-button color="stable" block style="font-weight:300;" on-click="goToHome()">
+    <div class="spacer" style="height:10px;" id="register-spacer"></div>
+    <button id="register-signup" ion-button color="stable" block style="font-weight:300;" (click)="register(user)">
       Sign up
     </button>
   </form>
-</ion-content>
+</ion-content>`

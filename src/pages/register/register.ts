@@ -5,6 +5,7 @@ import { HomePage } from '../home/home';
 
 import { User } from "../../shared/models/user";
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'page-register',
@@ -12,7 +13,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class RegisterPage {
 
-  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  user = {} as User;
+  formError: string;
+  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private afs: AngularFirestore) {
   }
 
   goToLogin(params){
@@ -32,10 +35,25 @@ export class RegisterPage {
         user.password
       );
       if (result) {
-        this.navCtrl.setRoot(HomePage);
+          this.afs.collection("users").doc(result.uid).set({
+              displayName: this.user.fname + ' ' + this.user.lname,
+              email: this.user.email,
+              photoURL: "",
+              providerId: "email",
+              lastLogin: result.metadata.lastSignInTime,
+              created: result.metadata.creationTime
+          }, { merge: true })
+          .then(function() {
+              console.log("Document successfully written!");
+          })
+          .catch(function(error) {
+              console.error("Error writing document: ", error);
+          });
+          this.navCtrl.setRoot(HomePage);
       }
     } catch (e) {
-      console.error(e);
+        let serverMessage = e.message;
+        this.formError = serverMessage.substr(serverMessage.indexOf(":") + 1);
     }
   }
 

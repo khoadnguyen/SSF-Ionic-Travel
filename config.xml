@@ -92,4 +92,5 @@
         <variable name="CHANNEL_NAME" value="Master" />
         <variable name="UPDATE_METHOD" value="auto" />
     </plugin>
+    <engine name="browser" spec="~5.0.1" />
 </widget>

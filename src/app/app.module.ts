@@ -15,6 +15,7 @@ import { HomePage } from '../pages/home/home';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../enviornments/enviornment';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -22,6 +23,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { PhotoLibrary } from '@ionic-native/photo-library';
 import { AuthProvider } from '../providers/auth/auth';
+import { FirestoreProvider } from '../providers/firestore/firestore';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { AuthProvider } from '../providers/auth/auth';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule.enablePersistence()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,7 +65,8 @@ import { AuthProvider } from '../providers/auth/auth';
     Geolocation,
     PhotoLibrary,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    FirestoreProvider
   ]
 })
 export class AppModule {}

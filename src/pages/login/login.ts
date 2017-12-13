@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
 import { RegisterPage } from '../register/register';
+import { HomePage } from '../home/home';
 
 import { User } from "../../shared/models/user";
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'page-login',
@@ -13,8 +14,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class LoginPage {
 
   user = {} as User;
+  formError: string;
 
-  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private afs: AngularFirestore) {
   }
 
   goToHome(params){
@@ -27,21 +29,26 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage);
   }
 
-  goToLogin(params){
-    if (!params) params = {};
-    this.navCtrl.push(LoginPage);
-  }
-
   async login(user: User) {
     try {
       const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
       if (result) {
-        console.log(result)
-        //this.navCtrl.setRoot(HomePage);
+        // console.log(result)
+        this.afs.collection("users").doc(result.uid).update({
+            lastLogin: result.metadata.lastSignInTime
+        })
+        .then(function() {
+            console.log("Document successfully accessed!");
+        })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
+        });
+        this.navCtrl.setRoot(HomePage);
       }
     }
     catch (e) {
-      console.error(e);
+      let serverMessage = e.message;
+      this.formError = serverMessage.substr(serverMessage.indexOf(":") + 1);
     }
   }
 

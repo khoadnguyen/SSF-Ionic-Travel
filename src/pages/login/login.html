@@ -1,5 +1,5 @@
 <ion-content padding id="page5">
-  <h2 id="login-heading5" style="color:#000000;font-weight:300;text-align:center;">
+  <h2 id="login-heading5" style="color:#000000;font-weight:300;text-align:center; margin-top: 20px;">
     Login
   </h2>
   <form id="login-form1">
@@ -16,9 +16,15 @@
         </ion-label>
         <ion-input type="password" placeholder="" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"></ion-input>
       </ion-item>
+      <ion-item id="register-error" style="margin-top: 10px; color: red;" *ngIf="formError">
+        <ion-label style="display: none;"></ion-label>
+        <div item-content text-wrap text-left float-start>
+          {{formError}}
+        </div>
+      </ion-item>
     </ion-list>
-    <div class="spacer" style="height:40px;" id="login-spacer1"></div>
-    <button id="login-button1" ion-button color="stable" block style="font-weight:300;" (click)="login(user)">
+    <div class="spacer" style="height:10px;" id="login-spacer1"></div>
+    <button id="login-button1" ion-button color="stable" block style="font-weight:300; margin-bottom: 10px;" (click)="login(user)">
       Log in
     </button>
     <button id="login-button2" ion-button clear color="positive" block style="font-weight:300;" on-click="goToRegister()">
