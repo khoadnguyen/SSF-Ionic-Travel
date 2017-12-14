@@ -24,6 +24,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { PhotoLibrary } from '@ionic-native/photo-library';
 import { AuthProvider } from '../providers/auth/auth';
 import { FirestoreProvider } from '../providers/firestore/firestore';
+import { UserProvider } from '../providers/user/user';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { FirestoreProvider } from '../providers/firestore/firestore';
     PhotoLibrary,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    FirestoreProvider
+    FirestoreProvider,
+    UserProvider
   ]
 })
 export class AppModule {}
