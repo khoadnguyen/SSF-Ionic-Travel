@@ -5,7 +5,7 @@ import { SearchPage } from '../search/search';
 import { Search2Page } from '../search2/search2';
 import { MessagePage } from '../message/message';
 
-
+import { UserProvider } from '../../providers/user/user';
 
 @Component({
   selector: 'page-home',
@@ -13,7 +13,9 @@ import { MessagePage } from '../message/message';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController,  public user$: UserProvider) {
+    console.log("User ID: ", user$.userId);
+  }
 
   goToProfile(params){
     if (!params) params = {};
